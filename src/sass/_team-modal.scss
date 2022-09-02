@@ -1,0 +1,249 @@
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease-in-out;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.team-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(85%);
+  padding-top: 25px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include mq(tablet) {
+    padding-bottom: 10px;
+  }
+
+  @include mq(desktop) {
+    max-width: 1200px;
+    padding-bottom: 25px;
+  }
+}
+
+.team-modal__icon {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+  color: #000000;
+  transition: color 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: $button-accent-bg-color;
+  }
+}
+
+.team-modal__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include mq(tablet) {
+    margin-bottom: 20px;
+  }
+
+  @include mq(desktop) {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+
+// TODO потім видалити зайву розмітку
+.team-modal__list {
+  display: none;
+
+  // ! варіант з 3х3
+  @include mq(desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+.team-modal__item {
+  max-width: 350px;
+  border-radius: 5px;
+  padding: 25px;
+
+  @include mq(tablet) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 250px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  // ! варіант з 3х3
+  @include mq(desktop) {
+    max-width: 200px;
+  }
+}
+
+.team-modal__img {
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  @include mq(desktop) {
+    margin-bottom: 10px;
+  }
+}
+
+.team-modal__subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include mq(mobile-only) {
+    margin-bottom: 10px;
+  }
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socials__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  transition: border-color 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    & .socials__icon {
+      color: $button-accent-bg-color;
+    }
+  }
+}
+
+.socials__icon {
+  width: 25px;
+  height: 25px;
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 300ms ease-in-out;
+}
+
+.swiper {
+  @include mq(desktop) {
+    display: none;
+  }
+
+  & .team-modal {
+    max-width: 350px;
+
+    @include mq(tablet) {
+      max-width: 500px;
+    }
+  }
+
+  & .team-modal__item {
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #ffffff;
+
+    @include mq(tablet) {
+      margin-bottom: 15px;
+    }
+
+    @include mq(desktop) {
+      margin-bottom: 50px;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: calc(var(--swiper-navigation-size) / 40 * 5);
+    color: rgba(0, 0, 0, 0.5);
+    transition: color 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $button-accent-bg-color;
+    }
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 30px;
+  }
+}
+
+.notification {
+  display: none;
+  padding-top: 50px;
+  font-size: 16px;
+  line-height: 1.19;
+  color: $footer-dark-text-color;
+  text-align: center;
+}
+
+.empty-notification--active,
+.guest-notification--active {
+  display: block;
+}
+
+.empty-notification__gif {
+  width: 200px;
+  height: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+.guest-notification__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guest-notification__gif {
+  width: 150px;
+  height: 150px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.guest-notification__icon {
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+}
